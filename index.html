@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Salvador Digital y Próspero | Propuesta Estratégica v1.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .hero-bg.portada { background-image: url('assets/00-portada.png'); background-size: cover; background-position: center; }
+
+        /* ── Figura 5 · Matriz nativa en web ── */
+        .matriz-wrap { overflow-x: auto; }
+        .matriz-table { border-collapse: separate; border-spacing: 0 6px; width: 100%; }
+        .matriz-table td, .matriz-table th { white-space: nowrap; }
+        .matriz-table thead th.colhead { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--navy, #0f3460); text-align: center; padding: 0.5rem 0.55rem; line-height: 1.2; white-space: normal; }
+        .rowhead { font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 700; text-align: right; padding: 0.45rem 0.9rem 0.45rem 0.4rem; white-space: normal; min-width: 300px; }
+        .c-eje1 { color: #1f5aa8; } .c-eje2 { color: #0d9488; } .c-eje3 { color: #b45309; }
+        .c-eje4 { color: #6d28d9; } .c-eje5 { color: #16a34a; } .c-eje6 { color: #d4a017; }
+        .matriz-table tbody td { font-size: 0.82rem; font-weight: 600; text-align: center; padding: 0.7rem 1rem; min-width: 110px; border-radius: 4px; margin: 0 3px; }
+        .matriz-table tbody td:first-child { border-radius: 0; background: #fff; }
+        .lv0 { background: #1a3a6b; color: #fff; } .lv1 { background: #4a6fa5; color: #fff; }
+        .lv2 { background: #a9bcd9; color: #1f2937; } .lv3 { background: #dbe4f2; color: #1f2937; }
+        .matriz-leyenda { display: flex; justify-content: center; gap: 1.2rem; margin-top: 1rem; flex-wrap: wrap; }
+        .matriz-leyenda .ml { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.82rem; font-weight: 600; color: #1f2937; }
+        .matriz-leyenda .ml::before { content: ''; width: 26px; height: 12px; border-radius: 3px; display: inline-block; }
+        .ml0::before { background: #1a3a6b; } .ml1::before { background: #4a6fa5; }
+        .ml2::before { background: #a9bcd9; } .ml3::before { background: #dbe4f2; }
+    </style>
+</head>
+<body>
+    <div id="pinModal" class="pin-modal active">
+        <div class="pin-modal-backdrop"></div>
+        <div class="pin-modal-content">
+            <div class="pin-header">
+                <div class="pin-logo"><i class="fas fa-shield-halved"></i></div>
+                <h2>Acceso Protegido</h2>
+                <p>El Salvador Digital y Próspero</p>
+            </div>
+            <div class="pin-body">
+                <p class="pin-instruction">Ingrese el PIN de acceso</p>
+                <div class="pin-inputs">
+                    <input type="password" maxlength="1" class="pin-digit" data-index="0" inputmode="numeric">
+                    <input type="password" maxlength="1" class="pin-digit" data-index="1" inputmode="numeric">
+                    <input type="password" maxlength="1" class="pin-digit" data-index="2" inputmode="numeric">
+                    <input type="password" maxlength="1" class="pin-digit" data-index="3" inputmode="numeric">
+                </div>
+                <div id="pinError" class="pin-error"></div>
+                <button id="pinSubmit" class="pin-submit">Acceder</button>
+            </div>
+            <div class="pin-footer"><small>Acceso restringido · Propuesta Confidencial · v1.0</small></div>
+        </div>
+    </div>
+
+    <div id="mainSite" class="main-site">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <div class="logo-icon"><i class="fas fa-landmark"></i></div>
+                    <div class="logo-text">
+                        <span class="logo-title">El Salvador Digital y Próspero</span>
+                        <span class="logo-subtitle">Propuesta Estratégica 1.0 · Octubre 2026</span>
+                    </div>
+                </div>
+                <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item"><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="#resumen" class="nav-link">Resumen</a></li>
+                    <li class="nav-item"><a href="#diagnostico" class="nav-link">Diagnóstico</a></li>
+                    <li class="nav-item"><a href="#portafolio" class="nav-link">Portafolio</a></li>
+                    <li class="nav-item"><a href="#mapa" class="nav-link">Oportunidades</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link">Estrategia <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#recaudacion">Recaudación</a></li>
+                            <li><a href="#priorizacion">Priorización</a></li>
+                            <li><a href="#valor">Valor institucional</a></li>
+                            <li><a href="#pasos">Acercamiento</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link">Más <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#metodologia">Metodología</a></li>
+                            <li><a href="#arquitectura">Arquitectura</a></li>
+                            <li><a href="#contratacion">Contratación</a></li>
+                            <li><a href="#csi">Grupo CSI</a></li>
+                            <li><a href="#riesgos">Riesgos</a></li>
+                            <li><a href="#anexos">Anexos</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- HERO -->
+        <header id="inicio" class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-certificate"></i>
+                    <span>PROPUESTA CONFIDENCIAL</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="hero-title-line">El Salvador</span>
+                    <span class="hero-title-line gradient-text">Digital y Próspero</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Estudio de oportunidades y portafolio de proyectos tecnológicos, de recaudación, movilidad, energía y servicios para el Gobierno de la República de El Salvador
+                </p>
+                <div class="hero-meta">
+                    <div class="hero-meta-item">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Preparado para: Titular del Poder Ejecutivo de la República de El Salvador</span>
+                    </div>
+                    <div class="hero-meta-item">
+                        <i class="fas fa-building-columns"></i>
+                        <span>Preparado por: [Nombre de la empresa o consorcio proponente]</span>
+                    </div>
+                    <div class="hero-meta-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Versión 1.0 · Octubre de 2026</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="#portafolio" class="btn btn-primary">
+                        <span>Ver las 19 Fichas Completas</span>
+                        <i class="fas fa-file-invoice"></i>
+                    </a>
+                    <a href="#mapa" class="btn btn-secondary">
+                        <span>Mapa de Oportunidades</span>
+                        <i class="fas fa-th-large"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-scroll">
+                <div class="scroll-indicator">
+                    <span>Deslizar</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- AVISO -->
+        <section class="stats">
+            <div class="container">
+                <div class="table-wrapper" style="margin-top:2rem;">
+                    <div class="table-title"><i class="fas fa-circle-exclamation"></i> Aviso</div>
+                    <div class="table-responsive">
+                        <table class="data-table"><tbody>
+                            <tr><td>Este documento es una propuesta para consideración de las autoridades nacionales y municipales, a quienes corresponde decidir la adopción, el alcance y la forma de cada proyecto. Se basa en fuentes públicas; las cifras fiscales y operativas internas deben validarse con las dependencias antes de cualquier decisión.</td></tr>
+                        </tbody></table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 01 RESUMEN EJECUTIVO -->
+        <section id="resumen" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">01</span>
+                    <h2 class="section-title">Resumen Ejecutivo</h2>
+                    <p class="section-subtitle">Tres realidades que conectan: la penal, la económica y la digital</p>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-flag"></i> Contexto</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>El Salvador combina hoy tres realidades que esta propuesta busca conectar: una población penitenciaria sin precedentes (<strong>118,369 personas</strong> para unas <strong>30,864 plazas</strong>, según el IDHUCA vía EFE, junio de 2026), una economía en crecimiento (<strong>4.5% proyectado por el FMI para 2026</strong>) con un turismo y unas remesas en máximos históricos, y un Estado que ya tiene bases digitales como la factura electrónica, la firma electrónica certificada y el DUI, pero que aún puede llevar esos servicios a más personas y a más trámites.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="figures-grid">
+                    <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto 2rem;">
+                        <div class="figure-header">Figura 1 · El Salvador en seis cifras — Fuentes indicadas en cada recuadro</div>
+                        <img src="assets/fig01-kpis.png" alt="El Salvador en seis cifras" class="figure-img">
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-layer-group"></i> El portafolio: 19 proyectos en seis ejes</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead><tr><th>Eje</th><th>Proyectos</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>1. Seguridad y justicia</strong></td><td>P1 Gestión penitenciaria y expediente digital · P2 Trabajo con Propósito · P3 Educación, credenciales y empleo</td></tr>
+                                <tr><td><strong>2. Gobierno digital y recaudación</strong></td><td>P4 Inteligencia fiscal DTE · P5 Ventanilla única, app y pagos · P6 Registro, catastro y escritura · P7 Licencias digitales · P8 Plataforma municipal</td></tr>
+                                <tr><td><strong>3. Economía local y turismo</strong></td><td>P9 Red comunitaria de pago y servicios · P10 Pase turístico y app del turista</td></tr>
+                                <tr><td><strong>4. Movilidad</strong></td><td>P11 Cobro electrónico · P12 Corredores troncales (APP) · P13 Tráfico y seguridad vial</td></tr>
+                                <tr><td><strong>5. Agua, energía y conectividad</strong></td><td>P16 Internet comunitario · P19 Parque industrial geotérmico</td></tr>
+                                <tr><td><strong>6. Calidad de vida</strong></td><td>P17 Salud digital · P18 Alerta temprana y ciudad segura</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="figures-grid">
+                    <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto 2rem;">
+                        <div class="figure-header">Portada de la propuesta</div>
+                        <img src="assets/00-portada.png" alt="Portada de la propuesta El Salvador Digital y Próspero" class="figure-img">
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-route"></i> Modelo financiero y arranque</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>Se propone un portafolio de <strong>19 proyectos en seis ejes</strong>, con un modelo financiero en el que la mayor parte de los equipos y plataformas se paga con <strong>comisiones, ahorros compartidos o concesiones</strong>, y no con presupuesto inicial. Esto es relevante porque el programa con el FMI condiciona la consolidación fiscal, la transparencia y las reformas de pensiones.</td></tr>
+                                <tr><td><strong>Recomendación:</strong> iniciar con un paquete de arranque de <strong>100 días</strong> (P1 y P2 en un centro penal, P5 con pocos trámites, P7 licencia digital y alianzas para P10), que da resultados visibles y medibles con riesgo acotado, y que prepara los proyectos de mayor inversión: P6, P12 y P19. La sección 7.3 muestra cómo reducir el costo neto del sistema penitenciario.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 ALCANCE Y METODOLOGIA -->
+        <section id="metodologia" class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">02</span>
+                    <h2 class="section-title">Alcance y Metodología</h2>
+                    <p class="section-subtitle">Cuatro pasos del estudio y limitaciones declaradas</p>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-compass"></i> Metodología</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>El estudio se elaboró con información pública oficial, académica y periodística consultada en octubre de 2026, y con la experiencia del equipo en proyectos de software para instituciones públicas, pagos y energía solar. Siguió cuatro pasos: (1) revisión del contexto institucional; (2) diagnóstico de condiciones sociales, fiscales y operativas; (3) revisión de plataformas y marco normativo existentes; y (4) construcción de un portafolio con su lógica económica, modelo de contratación y hoja de ruta.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-circle-info"></i> Limitaciones</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>No se tuvo acceso a datos internos de recaudación, padrones, presupuestos ni contratos vigentes; las estimaciones económicas son escalas y escenarios de trabajo, no pronósticos.</td></tr>
+                                <tr><td>Algunas cifras provienen de declaraciones previas (por ejemplo, el costo penitenciario de unos US$150 millones anuales expresado en 2024) y deben actualizarse.</td></tr>
+                                <tr><td>Varios datos de prensa, como el desmontaje de las estaciones del SITRAMSS, deben confirmarse con la autoridad competente.</td></tr>
+                                <tr><td>El Anexo A propone un cuestionario para completar el sondeo con cada dependencia.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 DIAGNOSTICO -->
+        <section id="diagnostico" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">03</span>
+                    <h2 class="section-title">Diagnóstico del País</h2>
+                    <p class="section-subtitle">Sistema penitenciario, condiciones sociales y económicas, finanzas y FMI, gobierno digital, movilidad, agua y energía</p>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-gavel"></i> 3.1 Sistema penitenciario</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>El IDHUCA estima <strong>118,369 personas privadas de libertad</strong> al cierre de 2025 y una tasa de <strong>1,963 por cada 100,000 habitantes</strong>. El CECOT, con capacidad nominal de 40,000, tenía ocupado el <strong>36%</strong>. Incluso con el CECOT lleno, la ocupación sería de unos <strong>167%</strong>, por lo que, en palabras del informe, el problema “no es coyuntural, ni se resuelve únicamente con infraestructura”.</td></tr>
+                                <tr><td>El Ejecutivo ya ha dado señales de interés en el trabajo penitenciario: en 2024 anunció la capacitación de miles de reclusos y un taller textil con unos <strong>5,400 internos</strong> para <strong>2.4 millones de uniformes escolares</strong>. Esto muestra voluntad política y una demanda estatal que puede ordenarse y medirse. Al mismo tiempo, organizaciones de derechos humanos han señalado preocupaciones sobre las condiciones de reclusión y el debido proceso, por lo que todo proyecto con población privada de libertad debe diseñarse con estándares internacionales verificables (sección 11).</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="figures-grid">
+                    <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto 2rem;">
+                        <div class="figure-header">Figura 2 · Capacidad del sistema penitenciario y población, diciembre de 2025 — Fuente: IDHUCA vía EFE, junio de 2026</div>
+                        <img src="assets/fig02-carceles.png" alt="Capacidad del sistema penitenciario de El Salvador" class="figure-img">
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-users"></i> 3.2 Condiciones sociales y económicas</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>La encuesta de hogares 2025 muestra una mejora: la pobreza multidimensional bajó de <strong>21.1% a 20.1%</strong> y <strong>262,405 personas salieron de la pobreza</strong>. Aun así, el <strong>66.2% de los hogares no tiene seguridad social</strong> y el subempleo es el problema más frecuente en los hogares con carencias. Esto implica que las soluciones deben incluir acceso asistido, puntos de atención en el comercio de barrio y uso de celular básico, y no solo aplicaciones para población conectada.</td></tr>
+                                <tr><td>Las remesas alcanzaron <strong>US$9,988 millones en 2025</strong> (17.7% más que en 2024; entre 24% y 27% del PIB según la medición), con <strong>92.4% originadas en Estados Unidos</strong>. Representan la principal fuente de divisas y una oportunidad para canalizar pagos, ahorro y crédito mediante la red comunitaria (P9). En paralelo, el turismo cerró 2025 con <strong>4.1 millones de visitantes</strong> y <strong>US$3,635 millones de ingresos</strong>.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="figures-grid">
+                    <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto 2rem;">
+                        <div class="figure-header">Figura 3 · Indicadores de hogares, EHPM 2025 — Fuente: BCR</div>
+                        <img src="assets/fig03-hogares.png" alt="Indicadores de hogares EHPM 2025" class="figure-img">
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-scale-balanced"></i> 3.3 Finanzas públicas y programa con el FMI</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>El FMI alcanzó el <strong>3 de septiembre de 2026</strong> un acuerdo técnico sobre la segunda y tercera revisión del programa y proyecta un crecimiento de <strong>4.5% para 2026</strong>, con condiciones de consolidación fiscal, reforma de pensiones, transparencia y ajustes relacionados con Bitcoin y la billetera Chivo. <strong>Implicación de diseño:</strong> los proyectos deben ser fiscalmente neutros o positivos y financiables con concesiones, APP, contratos de energía o ahorros compartidos.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-mobile-screen"></i> 3.4 Gobierno digital y servicios</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td><strong>Facturación electrónica (DTE):</strong> obligatoria para contribuyentes de IVA, con transmisión en tiempo real a Hacienda. La normativa DTE 2.0 exige adaptar las soluciones antes del 1 de diciembre de 2026.</td></tr>
+                                <tr><td><strong>Firma electrónica certificada:</strong> disponible en línea mediante el Banco Central de Reserva, con validez equivalente a la firma manuscrita.</td></tr>
+                                <tr><td><strong>Identidad:</strong> el DUI es el ancla natural para credenciales, licencias y servicios.</td></tr>
+                                <tr><td><strong>Pagos digitales:</strong> existe experiencia con billeteras y bitcoin que el programa con el FMI busca ordenar; conviene diseñar una pasarela interoperable de propósito general.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-bus"></i> 3.5 Movilidad y transporte</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>El transporte colectivo sigue operado por concesionarios privados de rutas. El SITRAMSS está inactivo desde 2020 y, según reportes de octubre de 2026, sus estaciones se desmontan. El artículo 52 de la ley de transporte exige cobro electrónico, gobernador de velocidad y cámaras, y la Asamblea aprobó un préstamo BID de <strong>US$60 millones</strong> para cobro electrónico y seguridad vial. El intento anterior (tarjeta SUBES) falló por problemas técnicos y de adopción, lo que exige un diseño centrado en usuarios y operadores.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-droplet"></i> 3.6 Agua y energía</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>La geotermia es una ventaja competitiva: el país tiene <strong>217 MW instalados</strong>, LaGeo proyecta llegar a unos <strong>347 MW hacia 2030</strong> y el Banco Mundial aprobó <strong>US$150 millones</strong> para ampliar generación y usos directos del calor (P19). El consumo eléctrico del bombeo y del alumbrado suele ser uno de los mayores gastos de los operadores de agua y de los municipios. Los datos de pérdidas, cartera vencida y consumo deben levantarse con ANDA, las juntas de agua y los municipios (Anexo A), por lo que las cifras del sector son escalas de trabajo.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 ARQUITECTURA -->
+        <section id="arquitectura" class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">04</span>
+                    <h2 class="section-title">Arquitectura de la Propuesta</h2>
+                    <p class="section-subtitle">Un ecosistema de 19 proyectos que giran alrededor de la red comunitaria</p>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-circle-nodes"></i> Cómo funciona el ecosistema</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>El portafolio funciona como un ecosistema: la <strong>red comunitaria de pago y servicios</strong> (tiendas, pupuserías y agentes) es la puerta de entrada de pagos, recargas, remesas y servicios en cada colonia y comunidad, y se conecta con el transporte, el agua y la luz, los trámites, la proveeduría local, el crédito, el turismo y el internet comunitario.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="figures-grid">
+                    <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto 2rem;">
+                        <div class="figure-header">Figura 4 · Ecosistema de la propuesta alrededor de la red comunitaria de pago y servicios</div>
+                        <img src="assets/fig04-ecosistema.png" alt="Ecosistema de la propuesta" class="figure-img">
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-compass"></i> Principios que guían el diseño</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td><strong>Financiamiento por comisión, ahorro y concesión</strong></td><td>Para que equipos y plataformas no representen gasto inicial del Estado</td></tr>
+                                <tr><td><strong>Transición gradual</strong></td><td>Con efectivo y atención asistida mientras crece la adopción digital</td></tr>
+                                <tr><td><strong>Medición desde el inicio</strong></td><td>Con línea base e indicadores públicos para cada proyecto</td></tr>
+                                <tr><td><strong>Dignidad y voluntariedad</strong></td><td>Para P1 a P3, un cuarto principio: en todo trabajo y capacitación penitenciaria</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 MAPA DE OPORTUNIDADES -->
+        <section id="mapa" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">05</span>
+                    <h2 class="section-title">Mapa de Oportunidades</h2>
+                    <p class="section-subtitle">Contribución de cada proyecto a los cuatro objetivos de la propuesta</p>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-circle-info"></i> Lectura</div>
+                    <div class="table-responsive">
+                        <table class="data-table"><tbody>
+                            <tr><td>La figura muestra la contribución de cada proyecto a los objetivos de la propuesta: aumentar la economía, aumentar la recaudación, mejorar la calidad de vida y fortalecer la imagen del gobierno. Es una valoración cualitativa del equipo, sujeta a validación con datos oficiales.</td></tr>
+                        </tbody></table>
+                    </div>
+                </div>
+
+                <div class="figures-grid">
+                    <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto 2rem;">
+                        <div class="figure-header">Figura 5 · Contribución de cada proyecto a los cuatro objetivos (valoración cualitativa)</div>
+                        <div class="matriz-wrap">
+                            <table class="matriz-table">
+                                <thead>
+                                    <tr>
+                                        <th class="matriz-rowhead"></th>
+                                        <th class="colhead">Eco-<br>nomía</th>
+                                        <th class="colhead">Recau-<br>dación</th>
+                                        <th class="colhead">Calidad<br>de vida</th>
+                                        <th class="colhead">Imagen de<br>gobierno</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="rowhead c-eje1">P1 · Gestión penitenciaria y expediente digital</td><td class="lv1">Alta</td><td class="lv3">Baja</td><td class="lv2">Media</td><td class="lv1">Alta</td></tr>
+                                    <tr><td class="rowhead c-eje1">P2 · Trabajo con Propósito</td><td class="lv0">Muy alta</td><td class="lv2">Media</td><td class="lv1">Alta</td><td class="lv0">Muy alta</td></tr>
+                                    <tr><td class="rowhead c-eje1">P3 · Educación, credenciales y empleo</td><td class="lv2">Media</td><td class="lv3">Baja</td><td class="lv1">Alta</td><td class="lv2">Media</td></tr>
+                                    <tr><td class="rowhead c-eje2">P4 · Inteligencia fiscal sobre DTE</td><td class="lv2">Media</td><td class="lv0">Muy alta</td><td class="lv3">Baja</td><td class="lv2">Media</td></tr>
+                                    <tr><td class="rowhead c-eje2">P5 · Ventanilla única, app y pagos</td><td class="lv2">Media</td><td class="lv1">Alta</td><td class="lv1">Alta</td><td class="lv0">Muy alta</td></tr>
+                                    <tr><td class="rowhead c-eje2">P6 · Registro, catastro y escritura digital</td><td class="lv1">Alta</td><td class="lv1">Alta</td><td class="lv1">Alta</td><td class="lv2">Media</td></tr>
+                                    <tr><td class="rowhead c-eje2">P7 · Licencias y credenciales digitales</td><td class="lv2">Media</td><td class="lv1">Alta</td><td class="lv2">Media</td><td class="lv1">Alta</td></tr>
+                                    <tr><td class="rowhead c-eje2">P8 · Plataforma municipal integral</td><td class="lv2">Media</td><td class="lv1">Alta</td><td class="lv2">Media</td><td class="lv1">Alta</td></tr>
+                                    <tr><td class="rowhead c-eje3">P9 · Red comunitaria de pago y servicios</td><td class="lv0">Muy alta</td><td class="lv1">Alta</td><td class="lv1">Alta</td><td class="lv1">Alta</td></tr>
+                                    <tr><td class="rowhead c-eje3">P10 · Pase turístico y app del turista</td><td class="lv0">Muy alta</td><td class="lv2">Media</td><td class="lv2">Media</td><td class="lv0">Muy alta</td></tr>
+                                    <tr><td class="rowhead c-eje4">P11 · Cobro electrónico en transporte</td><td class="lv2">Media</td><td class="lv1">Alta</td><td class="lv1">Alta</td><td class="lv1">Alta</td></tr>
+                                    <tr><td class="rowhead c-eje4">P12 · Corredores troncales (APP)</td><td class="lv1">Alta</td><td class="lv1">Alta</td><td class="lv0">Muy alta</td><td class="lv0">Muy alta</td></tr>
+                                    <tr><td class="rowhead c-eje4">P13 · Tráfico y seguridad vial</td><td class="lv2">Media</td><td class="lv2">Media</td><td class="lv1">Alta</td><td class="lv1">Alta</td></tr>
+                                    <tr><td class="rowhead c-eje5">P16 · Internet comunitario satelital</td><td class="lv1">Alta</td><td class="lv3">Baja</td><td class="lv1">Alta</td><td class="lv1">Alta</td></tr>
+                                    <tr><td class="rowhead c-eje6">P17 · Salud digital</td><td class="lv2">Media</td><td class="lv3">Baja</td><td class="lv0">Muy alta</td><td class="lv1">Alta</td></tr>
+                                    <tr><td class="rowhead c-eje6">P18 · Alerta temprana y ciudad segura</td><td class="lv3">Baja</td><td class="lv3">Baja</td><td class="lv0">Muy alta</td><td class="lv0">Muy alta</td></tr>
+                                    <tr><td class="rowhead c-eje5">P19 · Parque industrial geotérmico</td><td class="lv0">Muy alta</td><td class="lv1">Alta</td><td class="lv2">Media</td><td class="lv0">Muy alta</td></tr>
+                                </tbody>
+                            </table>
+                            <div class="matriz-leyenda">
+                                <span class="ml ml0">Muy alta</span>
+                                <span class="ml ml1">Alta</span>
+                                <span class="ml ml2">Media</span>
+                                <span class="ml ml3">Baja</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 PORTAFOLIO P1-P19 -->
+        <section id="portafolio" class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">06</span>
+                    <h2 class="section-title">Portafolio de Proyectos P1 – P19</h2>
+                    <p class="section-subtitle">Fichas completas organizadas por eje: problema, solución, impacto, modelo de contratación, piloto, indicadores y riesgos</p>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-palette"></i> Código de color de las fichas</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead><tr><th>Código de color</th><th>Significado</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Franja de color del encabezado</strong></td><td>Eje temático del proyecto</td></tr>
+                                <tr><td><strong>Ola 1, 2 o 3</strong></td><td>Momento sugerido de arranque (sección 9)</td></tr>
+                                <tr><td><strong>Escala de inversión</strong></td><td>Cualitativa: Baja (menos de US$2 millones) · Media (US$2 a 10 millones) · Alta (más de US$10 millones). Los costos reales dependen de la infraestructura existente y de las especificaciones que defina el Gobierno</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="eje1" class="portfolio-category">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-gavel"></i></div>
+                        <div>
+                            <h3 class="category-title">Eje 1 · Seguridad y justicia</h3>
+                            <p class="category-subtitle">De la contención al trabajo, la educación y la reinserción (P1, P2, P3)</p>
+                        </div>
+                    </div>
+                    <div class="full-fichas">
+                        <article class="full-ficha" id="ficha-P1"></article>
+                        <article class="full-ficha" id="ficha-P2"></article>
+                        <article class="full-ficha" id="ficha-P3"></article>
+                    </div>
+                </div>
+
+                <div id="eje2" class="portfolio-category">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-receipt"></i></div>
+                        <div>
+                            <h3 class="category-title">Eje 2 · Gobierno digital y recaudación</h3>
+                            <p class="category-subtitle">Del DTE a la ventanilla única, el registro, las licencias y el municipio (P4–P8)</p>
+                        </div>
+                    </div>
+                    <div class="full-fichas">
+                        <article class="full-ficha" id="ficha-P4"></article>
+                        <article class="full-ficha" id="ficha-P5"></article>
+                        <article class="full-ficha" id="ficha-P6"></article>
+                        <article class="full-ficha" id="ficha-P7"></article>
+                        <article class="full-ficha" id="ficha-P8"></article>
+                    </div>
+                </div>
+
+                <div id="eje3" class="portfolio-category">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-store"></i></div>
+                        <div>
+                            <h3 class="category-title">Eje 3 · Economía local y turismo</h3>
+                            <p class="category-subtitle">La tienda de barrio conectada y el pase turístico (P9, P10)</p>
+                        </div>
+                    </div>
+                    <div class="full-fichas">
+                        <article class="full-ficha" id="ficha-P9"></article>
+                        <article class="full-ficha" id="ficha-P10"></article>
+                    </div>
+                </div>
+
+                <div id="eje4" class="portfolio-category">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-bus"></i></div>
+                        <div>
+                            <h3 class="category-title">Eje 4 · Movilidad</h3>
+                            <p class="category-subtitle">Cobro electrónico, corredores troncales y tráfico inteligente (P11–P13)</p>
+                        </div>
+                    </div>
+                    <div class="full-fichas">
+                        <article class="full-ficha" id="ficha-P11"></article>
+                        <article class="full-ficha" id="ficha-P12"></article>
+                        <article class="full-ficha" id="ficha-P13"></article>
+                    </div>
+                </div>
+
+                <div id="eje5" class="portfolio-category">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-bolt"></i></div>
+                        <div>
+                            <h3 class="category-title">Eje 5 · Agua, energía y conectividad</h3>
+                            <p class="category-subtitle">Internet comunitario y geotermia (P16, P19)</p>
+                        </div>
+                    </div>
+                    <div class="full-fichas">
+                        <article class="full-ficha" id="ficha-P16"></article>
+                        <article class="full-ficha" id="ficha-P19"></article>
+                    </div>
+                </div>
+
+                <div id="eje6" class="portfolio-category">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-heart"></i></div>
+                        <div>
+                            <h3 class="category-title">Eje 6 · Calidad de vida</h3>
+                            <p class="category-subtitle">Salud digital y alerta temprana (P17, P18)</p>
+                        </div>
+                    </div>
+                    <div class="full-fichas">
+                        <article class="full-ficha" id="ficha-P17"></article>
+                        <article class="full-ficha" id="ficha-P18"></article>
+                    </div>
+                </div>
+
+                <div class="table-wrapper" style="margin-top:2rem;">
+                    <div class="table-title"><i class="fas fa-diagram-project"></i> Ejemplo de flujo: del hacinamiento al trabajo (P1, P2 y P3)</div>
+                    <div class="figures-grid">
+                        <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto;">
+                            <div class="figure-header">Figura 9 · Ruta propuesta para la población privada de libertad dentro de un programa voluntario y auditado</div>
+                            <img src="assets/fig09-flujo.png" alt="Ruta del hacinamiento al trabajo" class="figure-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 07 RECAUDACION -->
+        <section id="recaudacion" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">07</span>
+                    <h2 class="section-title">Palancas de Recaudación y Lógica Económica</h2>
+                    <p class="section-subtitle">Cuatro mecanismos: ampliar la base, elevar el cumplimiento, reducir costos y fugas, y crear ingresos por servicios o concesiones</p>
+                </div>
+
+                <div class="figures-grid">
+                    <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto 2rem;">
+                        <div class="figure-header">Figura 10 · Cuatro palancas y los proyectos que las activan</div>
+                        <img src="assets/fig10-palancas.png" alt="Cuatro palancas de recaudación" class="figure-img">
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-square-root-variable"></i> 7.1 Cómo estimar el potencial</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>Para cada concepto de ingreso: <strong>incremento = recaudación base × (cumplimiento objetivo − cumplimiento actual) + ingresos por nuevos servicios − costo del proyecto</strong>. Como referencia, se proponen tres escenarios sobre la base de ingresos propios digitalizable, sujetos a validación con datos de Hacienda y alineados con el rango que el BID asocia a la facturación electrónica (hasta 6%).</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-chart-column"></i> Escenarios de mejora</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead><tr><th>Escenario</th><th>Mejora sobre la base digitalizada</th><th>Lectura</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Conservador</strong></td><td>+3%</td><td>Solo mejora de cobro y menor fuga en trámites digitalizados</td></tr>
+                                <tr><td><strong>Base</strong></td><td>+6%</td><td>Incluye regularización de omisos y puntos de pago de barrio</td></tr>
+                                <tr><td><strong>Ambicioso</strong></td><td>+10%</td><td>Suma formalización, concesiones nuevas y registro y catastro actualizados</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-circle-info"></i> Nota</div>
+                    <div class="table-responsive">
+                        <table class="data-table"><tbody>
+                            <tr><td>Estos porcentajes son hipótesis de trabajo y no una proyección. El primer entregable debe ser una línea base con datos reales.</td></tr>
+                        </tbody></table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-store"></i> 7.2 Economía de la red comunitaria (P9)</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>Como el equipo se entrega sin costo y se financia con comisiones, la clave es el volumen de operaciones por comercio. La figura muestra cuántos meses tarda en recuperarse un equipo según su costo y las operaciones diarias, con un supuesto ilustrativo de <strong>US$0.05 de comisión por operación</strong>.</td></tr>
+                                <tr><td><strong>Lectura:</strong> con 40 operaciones diarias y un equipo de US$150, la recuperación toma unos 2.5 meses; con 15 operaciones, cerca de 7. Por eso se recomienda entregar el equipo en comodato con un mínimo mensual de operaciones, con posibilidad de retirarlo si el comercio no lo usa, y comenzar por las zonas de mayor tráfico.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="figures-grid">
+                    <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto 2rem;">
+                        <div class="figure-header">Figura 11 · Meses para recuperar el equipo (supuestos ilustrativos: comisión de US$0.05 por operación y 30 días por mes; reemplazar con cifras reales)</div>
+                        <img src="assets/fig11-pos.png" alt="Meses para recuperar el equipo POS" class="figure-img">
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-building-shield"></i> 7.3 Sostenibilidad financiera del sistema penitenciario</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>Entendemos “hacer rentables las prisiones” como <strong>reducir el costo neto por persona y generar ingresos para el Estado</strong>, sin convertir a las personas privadas de libertad en una fuente de lucro. El Ejecutivo expresó en 2024 un costo anual cercano a <strong>US$150 millones</strong>, que equivale a más de <strong>US$1,200 por persona al año</strong> si se divide entre la población de 2025 (cálculo indicativo, por actualizar con el presupuesto vigente). La métrica central es: <strong>costo neto = costo operativo − ahorros − ingresos netos del Estado</strong>.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-key"></i> Palancas para reducir el costo neto</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead><tr><th>Palanca</th><th>Cómo funciona</th><th>Proyectos</th><th>Tipo</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Autoabastecimiento interno</strong></td><td>Huertos, agroindustria, panadería, lavandería, uniformes, mobiliario y mantenimiento producidos dentro del sistema</td><td>P2</td><td>Ahorro</td></tr>
+                                <tr><td><strong>Producción para compras públicas</strong></td><td>Uniformes, mobiliario escolar y hospitalario y prefabricados con contratos marco y estándares de calidad</td><td>P2</td><td>Ingreso y ahorro</td></tr>
+                                <tr><td><strong>Servicios a terceros</strong></td><td>Reciclaje, ensamblaje, reparación de electrónicos, digitalización de archivos no sensibles y maquila para clientes privados</td><td>P2</td><td>Ingreso</td></tr>
+                                <tr><td><strong>Eficiencia procesal y digital</strong></td><td>Audiencias virtuales, menos traslados y expedientes al día para que cada plaza se ocupe solo el tiempo legalmente debido</td><td>P1</td><td>Ahorro</td></tr>
+                                <tr><td><strong>Salud y logística</strong></td><td>Compras agregadas, inventario de medicamentos y telemedicina</td><td>P1, P17</td><td>Ahorro</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="figures-grid">
+                    <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto 2rem;">
+                        <div class="figure-header">Figura 12 · Reducción ilustrativa del costo neto anual por escenario, sobre una base de US$150 millones (hipótesis de trabajo, no proyección)</div>
+                        <img src="assets/fig12-penitenciario.png" alt="Reducción del costo neto anual" class="figure-img">
+                        <div class="figure-caption">Los porcentajes son hipótesis para calibrar con el presupuesto real, el consumo eléctrico, la capacidad de los talleres y los precios de compras públicas. El primer entregable debe ser una línea base de costos por centro.</div>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-scale-balanced"></i> Reparto del valor que genera el trabajo</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>Para que el modelo sea justo y financiable, el margen de cada taller debe repartirse <strong>por regla y de forma auditable</strong> entre: el pago al interno, el ahorro para su salida, el apoyo a su familia, la reparación a víctimas y el Estado u operador. Las proporciones deben definirse en la normativa.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-ban"></i> Líneas rojas</div>
+                    <div class="table-responsive">
+                        <table class="data-table"><tbody>
+                            <tr><td>No recomendamos cobrar tarifas elevadas a las familias (llamadas, visitas, comisariato), pagar a contratistas por plazas ocupadas, imponer trabajo ni exhibir a personas privadas de libertad como atractivo turístico. La experiencia internacional con pagos por ocupación crea incentivos para mantener llenas las plazas y distorsiona decisiones judiciales, además de dañar la reputación y el acceso a financiamiento multilateral.</td></tr>
+                        </tbody></table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-lightbulb"></i> 7.4 Ideas adicionales evaluadas: contenido, trabajo digital y alojamiento de personas de otros países</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>Se evaluaron tres ideas propuestas para ampliar los ingresos del sistema. Cada una se califica por su viabilidad y por las condiciones que la harían defendible ante la ciudadanía, los tribunales y los financiadores.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-table-cells"></i> Calificación de las ideas</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead><tr><th>Idea</th><th>Qué es</th><th>Viabilidad</th><th>Condiciones y riesgos</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Contenido y obra creativa</strong></td><td>Música, arte, artesanía con marca propia, escritura, audiolibros, cursos de oficios dictados por internos capacitados, ilustración, doblaje y subtitulado</td><td>Media a alta</td><td>Consentimiento informado y revocable; sin exhibir víctimas ni glorificar delitos; sin convertir a las personas en espectáculo; reparto de ingresos por regla (víctimas, ahorro de salida, familia); derechos de autor y control de acceso a redes</td></tr>
+                                <tr><td><strong>Trabajo digital remoto en red controlada</strong></td><td>Etiquetado de datos para IA, transcripción, traducción, revisión de documentos y digitalización de archivos no sensibles, para clientes públicos y privados</td><td>Media a alta</td><td>Red cerrada y monitoreada; solo datos no sensibles; pago justo (programas piloto en otros países fueron criticados por salarios bajos); contratos con cláusulas de confidencialidad y auditoría</td></tr>
+                                <tr><td><strong>Alojar personas condenadas de otros países</strong></td><td>Arrendar plazas a otro Estado para personas con sentencia firme, bajo tratado, con estándares del país que paga y supervisión independiente</td><td>Media</td><td>Requiere tratado y ley de ejecución penal; preferible con consentimiento del trasladado; inspección externa de derechos humanos; separación de la población salvadoreña; ingresos brutos = plazas × tarifa, antes de costos de personal, salud, seguridad y supervisión</td></tr>
+                                <tr><td><strong>Alojar personas deportadas o sin condena</strong></td><td>Modelo reportado desde marzo de 2025 con Estados Unidos, que prensa y documentos judiciales vinculan a un pago de unos US$20,000 anuales por persona</td><td>Baja; no recomendado</td><td>Ha sido objeto de demandas y críticas de organizaciones de derechos humanos; el contrato no es público; riesgos de derecho internacional, reputación y de relación con el FMI y los bancos multilaterales</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-book"></i> Referencias del modelo legítimo</div>
+                    <div class="table-responsive">
+                        <table class="data-table"><tbody>
+                            <tr><td>Existen precedentes de arrendamiento de plazas entre Estados europeos, como <strong>Países Bajos con Noruega</strong> (cárcel de Norgerhaven) y <strong>con Bélgica</strong> (Tilburg), donde se trasladó a condenados con sentencia firme y se aplicaron los estándares del país emisor.</td></tr>
+                        </tbody></table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-route"></i> Recomendación</div>
+                    <div class="table-responsive">
+                        <table class="data-table"><tbody>
+                            <tr><td>Incorporar al programa P2 el contenido creativo y el trabajo digital remoto (Ola 2), ambos con las salvaguardas de la sección 11. Estudiar el alojamiento de condenados de otros países como línea de largo plazo (Ola 3), solo con tratado, estándares verificables y supervisión independiente. Mantener fuera de la propuesta el alojamiento de personas sin condena.</td></tr>
+                        </tbody></table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 08 CONTRATACION -->
+        <section id="contratacion" class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">08</span>
+                    <h2 class="section-title">Esquemas de Contratación y Marco Jurídico</h2>
+                    <p class="section-subtitle">La modalidad se elige proyecto por proyecto con revisión jurídica</p>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-file-signature"></i> 8.1 Modalidades posibles</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead><tr><th>Modalidad</th><th>Cuándo conviene</th><th>Consideraciones</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Contrato de servicios / licencia (SaaS)</strong></td><td>Plataformas como ventanilla, app, licencias y gestión penitenciaria (P1, P3, P5, P6, P7)</td><td>Implementación rápida y costo predecible; resguardar la propiedad estatal de los datos</td></tr>
+                                <tr><td><strong>Comisión privada por operación</strong></td><td>Red comunitaria, recaudo de transporte y pase turístico (P5, P9, P10, P11)</td><td>No genera gasto al gobierno; requiere convenio, tarifas topadas y niveles de servicio</td></tr>
+                                <tr><td><strong>Ahorro o ingreso compartido</strong></td><td>Fiscal, agua y plataforma municipal (P4, P8)</td><td>El pago depende del resultado verificado; requiere línea base y auditoría independiente</td></tr>
+                                <tr><td><strong>Concesión o APP/BOT</strong></td><td>Corredores troncales y tráfico (P12, P13, P19)</td><td>Requiere estudio de viabilidad, procedimiento y revisión de la ley aplicable</td></tr>
+                                <tr><td><strong>Contrato de compra de energía (PPA)</strong></td><td>Generación geotérmica (P19)</td><td>Estado paga por kWh; tarifa menor a la actual y plazo de 15 a 20 años</td></tr>
+                                <tr><td><strong>Contrato marco de compras públicas</strong></td><td>Bienes producidos en los talleres penitenciarios (P2)</td><td>Demanda cautiva con estándares de calidad y trazabilidad</td></tr>
+                                <tr><td><strong>Financiamiento multilateral</strong></td><td>Movilidad, salud y resiliencia (P11, P12, P17, P18, P19)</td><td>BID, BCIE y Banco Mundial; el BID anunció US$1,300 millones para vivienda y turismo en 2026</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="figures-grid">
+                    <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto 2rem;">
+                        <div class="figure-header">Figura 13 · Modalidades de contratación sugeridas para cada proyecto</div>
+                        <img src="assets/fig13-modelos.png" alt="Modalidades de contratación por proyecto" class="figure-img">
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-gavel"></i> 8.2 Marco normativo a revisar</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>Ley de Compras Públicas, ley de asocios público-privados y normas de contratación y transparencia.</td></tr>
+                                <tr><td>Código Tributario y normativa de facturación electrónica (DTE 2.0); Ministerio de Hacienda.</td></tr>
+                                <tr><td>Ley de firma electrónica y normativa del BCR y del Ministerio de Economía.</td></tr>
+                                <tr><td>Normativa penitenciaria y de ejecución de la pena; Reglas Mandela y convenios de la OIT sobre trabajo forzoso.</td></tr>
+                                <tr><td>Ley de transporte (artículo 52) y reglamentos del Viceministerio de Transporte; concesiones de rutas.</td></tr>
+                                <tr><td>Marco registral y catastral (CNR) y legislación del notariado.</td></tr>
+                                <tr><td>Marco del agua potable (ANDA y operadores locales) y del sector eléctrico y de telecomunicaciones (SIGET).</td></tr>
+                                <tr><td>Normativa financiera aplicable a pagos, agentes y comisiones (BCR y supervisión financiera); conviene operar con un banco aliado titular de los fondos.</td></tr>
+                                <tr><td>Reglas de endeudamiento municipal y de deuda pública, y protección de datos personales y ciberseguridad.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 09 PRIORIZACION -->
+        <section id="priorizacion" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">09</span>
+                    <h2 class="section-title">Priorización y Hoja de Ruta</h2>
+                    <p class="section-subtitle">Tres olas: arranque visible, consolidación y transformación</p>
+                </div>
+
+                <div class="table-wrapper" style="margin-bottom:2rem;">
+                    <div class="table-title"><i class="fas fa-circle-info"></i> Lectura</div>
+                    <div class="table-responsive">
+                        <table class="data-table"><tbody>
+                            <tr><td>Se propone ejecutar en <strong>tres olas</strong>. La Ola 1 reúne proyectos de bajo riesgo y resultados visibles; la Ola 2 consolida los que requieren integración de datos y coordinación; la Ola 3 agrupa los de mayor inversión y complejidad, apoyados en lo ya construido.</td></tr>
+                        </tbody></table>
+                    </div>
+                </div>
+
+                <div class="roadmap-grid">
+                    <div class="roadmap-card ola1">
+                        <div class="roadmap-card-header"><span class="roadmap-badge">Ola 1</span></div>
+                        <div class="roadmap-body">
+                            <h3>Arranque visible</h3>
+                            <p><strong>0 a 6 meses · P1, P2, P5, P7, P10 (piloto o diseño)</strong></p>
+                            <ul class="roadmap-list"><li>Bajo riesgo, resultados medibles y de fácil comunicación</li></ul>
+                        </div>
+                    </div>
+                    <div class="roadmap-card ola2">
+                        <div class="roadmap-card-header"><span class="roadmap-badge">Ola 2</span></div>
+                        <div class="roadmap-body">
+                            <h3>Consolidación</h3>
+                            <p><strong>6 a 18 meses · P3, P4, P8, P9, P11, P13, P18</strong></p>
+                            <ul class="roadmap-list"><li>Requieren integración de datos y coordinación entre dependencias y municipios</li></ul>
+                        </div>
+                    </div>
+                    <div class="roadmap-card ola3">
+                        <div class="roadmap-card-header"><span class="roadmap-badge">Ola 3</span></div>
+                        <div class="roadmap-body">
+                            <h3>Transformación</h3>
+                            <p><strong>12 a 36 meses · P6, P12, P16, P17, P19</strong></p>
+                            <ul class="roadmap-list"><li>Mayor inversión y complejidad; se apoyan en recaudo, pagos y datos de las olas previas</li></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="figures-grid" style="margin-top:2rem;">
+                    <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto 2rem;">
+                        <div class="figure-header">Figura 14 · Calendario por ola de implementación (36 meses desde la firma del convenio)</div>
+                        <img src="assets/fig14-gantt.png" alt="Calendario por ola de implementación" class="figure-img">
+                    </div>
+                    <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto 2rem;">
+                        <div class="figure-header">Figura 15 · Hitos del paquete de arranque</div>
+                        <img src="assets/fig15-cien.png" alt="Hitos del paquete de arranque de 100 días" class="figure-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10 GRUPO CSI -->
+        <section id="csi" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">10</span>
+                    <h2 class="section-title">Socio Estratégico: Grupo CSI</h2>
+                    <p class="section-subtitle">Capacidades que el gobierno suele exigir antes de contratar</p>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-building"></i> Perfil del aliado</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>Grupo CSI se presenta como una empresa de identidad digital, contact center y software para banca y gobierno, que opera mediante tres unidades (<strong>ART, Inovitz y Buzzword</strong>) y ofrece verificación de identidad, contact center omnicanal, fábrica de software, mesa de ayuda y gestión documental. Su perfil complementa al equipo proponente en tres frentes que el gobierno suele exigir antes de contratar: capacidad operativa a escala, experiencia con instituciones reguladas y respaldo corporativo</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-puzzle-piece"></i> Capacidades de Grupo CSI y dónde aportan en El Salvador</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead><tr><th>Capacidad</th><th>Proyectos donde aporta</th><th>Qué resuelve</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Verificación de identidad</strong></td><td>P1, P3, P5, P6, P7, P9</td><td>Altas confiables en expedientes penitenciarios, credenciales del DUI, licencias y usuarios de la ventanilla única; menos fraude</td></tr>
+                                <tr><td><strong>Contact center omnicanal</strong></td><td>P2, P5, P10, P11</td><td>Apoyo a órdenes de trabajo, atención ciudadana de la app de gobierno, afiliación del pase turístico y soporte del recaudo de transporte</td></tr>
+                                <tr><td><strong>Fábrica de software</strong></td><td>P4, P5, P6, P8, P12</td><td>Plataformas fiscales DTE, ventanilla única, registro y catastro, módulos municipales e integraciones con sistemas de Hacienda y municipios</td></tr>
+                                <tr><td><strong>Mesa de ayuda</strong></td><td>Todos</td><td>Soporte a usuarios internos, notarios, comercios de la red comunitaria, operadores de transporte y personal de los centros penales</td></tr>
+                                <tr><td><strong>Gestión documental</strong></td><td>P1, P6, P17</td><td>Digitalización de expedientes penitenciarios del acervo registral del CNR y de archivos clínicos</td></tr>
+                                <tr><td><strong>Relación con banca</strong></td><td>P9, P6</td><td>Banco aliado titular de los fondos de la red comunitaria, remesas e interoperabilidad con billeteras existentes</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-circle-info"></i> Nota</div>
+                    <div class="table-responsive">
+                        <table class="data-table"><tbody>
+                            <tr><td>[Insertar aquí casos de referencia, certificaciones y datos de contacto institucionales de Grupo CSI antes de enviar.]</td></tr>
+                        </tbody></table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11 VALOR INSTITUCIONAL -->
+        <section id="valor" class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">11</span>
+                    <h2 class="section-title">Valor Institucional</h2>
+                    <p class="section-subtitle">Más allá del beneficio económico, el portafolio ofrece al Ejecutivo cuatro resultados institucionales</p>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-landmark"></i> Mensajes centrales</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead><tr><th>Mensaje</th><th>Qué significa</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Resultados visibles en 100 días</strong></td><td>Pilotos con indicadores públicos que permiten comunicar avances concretos</td></tr>
+                                <tr><td><strong>Ingresos propios sin nuevos impuestos</strong></td><td>Mayor cumplimiento, menos fuga y nuevos servicios, con un modelo fiscalmente neutro</td></tr>
+                                <tr><td><strong>Un reto convertido en programa</strong></td><td>La carga penitenciaria se orienta a trabajo, capacitación y reinserción con metas medibles y auditoría</td></tr>
+                                <tr><td><strong>Modernización con inclusión</strong></td><td>Servicios digitales con acceso asistido para quienes no tienen celular, tarjeta o conectividad</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12 RIESGOS -->
+        <section id="riesgos" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">12</span>
+                    <h2 class="section-title">Riesgos y Salvaguardas</h2>
+                    <p class="section-subtitle">Estándares para el trabajo penitenciario y matriz de riesgos con mitigación concreta</p>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-shield-halved"></i> 11.1 Estándares para el trabajo penitenciario</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>Para que P1 a P3 sean sostenibles y financiables, recomendamos adoptar como mínimo los siguientes principios, alineados con las <strong>Reglas Mandela (reglas 96 a 103)</strong> y los <strong>convenios fundamentales de la OIT</strong> sobre trabajo forzoso:</td></tr>
+                                <tr><td><strong>Voluntariedad:</strong> el trabajo no puede imponerse como castigo ni condicionar derechos básicos</td></tr>
+                                <tr><td><strong>Remuneración equitativa y documentada</strong>, con un porcentaje para ahorro de salida, apoyo familiar y reparación a víctimas</td></tr>
+                                <tr><td><strong>Seguridad y salud en el trabajo:</strong> equipo de protección, capacitación y seguro de riesgos</td></tr>
+                                <tr><td><strong>Utilidad para la reinserción:</strong> oficios con demanda real y certificación reconocida</td></tr>
+                                <tr><td><strong>Supervisión independiente:</strong> auditorías periódicas y mecanismos de queja</td></tr>
+                                <tr><td><strong>Trazabilidad de la cadena de suministro:</strong> indispensable si los productos se exportan, ya que algunos mercados, como Estados Unidos, restringen bienes hechos con trabajo forzoso</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-triangle-exclamation"></i> 11.2 Matriz de riesgos</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead><tr><th>Riesgo</th><th>Probabilidad</th><th>Impacto</th><th>Mitigación</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Cuestionamientos de derechos humanos sobre el trabajo penitenciario</strong></td><td>Media</td><td>Alto</td><td>Diseño bajo Reglas Mandela y OIT, auditoría independiente y transparencia de resultados</td></tr>
+                                <tr><td><strong>Restricciones fiscales por el programa con el FMI</strong></td><td>Alta</td><td>Alto</td><td>Esquemas sin inversión inicial del Estado: APP, PPA, ahorro compartido</td></tr>
+                                <tr><td><strong>Fallas de adopción tecnológica, como en el caso de SUBES</strong></td><td>Media</td><td>Alto</td><td>Pilotos, capacitación a usuarios y operadores, soporte en campo y despliegue gradual</td></tr>
+                                <tr><td><strong>Ciberseguridad y fuga de datos sensibles</strong></td><td>Media</td><td>Muy alto</td><td>Arquitectura segura, cifrado, segmentación, auditorías y alojamiento soberano</td></tr>
+                                <tr><td><strong>Resistencia de operadores de transporte</strong></td><td>Alta</td><td>Medio</td><td>Integrarlos como socios y financiar la renovación de flota</td></tr>
+                                <tr><td><strong>Cumplimiento de la normativa de contratación pública</strong></td><td>Media</td><td>Alto</td><td>Procesos competitivos o convenios con respaldo legal y asesoría jurídica desde el inicio</td></tr>
+                                <tr><td><strong>Exclusión de población sin celular, tarjeta o conectividad</strong></td><td>Alta</td><td>Medio</td><td>Atención asistida, efectivo durante la transición y puntos en el comercio de barrio</td></tr>
+                                <tr><td><strong>Competencia o regulación de pagos y remesas</strong></td><td>Media</td><td>Medio</td><td>Operar con banco aliado titular de fondos y interoperar con billeteras existentes</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 13 PLAN DE ACERCAMIENTO -->
+        <section id="pasos" class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">13</span>
+                    <h2 class="section-title">Plan de Acercamiento y Siguientes Pasos</h2>
+                    <p class="section-subtitle">Cuatro etapas para avanzar con compromisos acotados y decisiones informadas</p>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-list-check"></i> Ruta en cuatro etapas</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead><tr><th>Etapa</th><th>Acción</th><th>Resultado esperado</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>1. Sesión de trabajo</strong></td><td>Presentar el portafolio, priorizar proyectos y definir metas de gobierno</td><td>Lista corta de proyectos y contrapartes designadas</td></tr>
+                                <tr><td><strong>2. Convenio marco</strong></td><td>Firmar un memorándum para el diagnóstico, sin costo para el Estado y con acuerdos de confidencialidad</td><td>Acceso a datos y sitios para el levantamiento técnico</td></tr>
+                                <tr><td><strong>3. Diagnóstico y línea base</strong></td><td>Aplicar el cuestionario del Anexo A y levantar datos reales de cada dependencia</td><td>Informe de línea base y estimaciones económicas calibradas</td></tr>
+                                <tr><td><strong>4. Pilotos de 90 a 120 días</strong></td><td>Ejecutar P1, P2, P5, P7 y los demás pilotos aprobados, con indicadores públicos</td><td>Resultados medibles y decisión de escalamiento</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-handshake"></i> Compromiso</div>
+                    <div class="table-responsive">
+                        <table class="data-table"><tbody>
+                            <tr><td>En un máximo de <strong>60 días</strong> presentaremos un plan de implementación detallado, con presupuesto, cronograma y estructura contractual para cada proyecto seleccionado.</td></tr>
+                        </tbody></table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANEXOS -->
+        <section id="anexos" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">A·C</span>
+                    <h2 class="section-title">Anexos</h2>
+                    <p class="section-subtitle">Cuestionario de sondeo, fuentes consultadas y líneas de crecimiento futuro</p>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-clipboard-question"></i> Anexo A · Cuestionario de sondeo para las dependencias</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>Las preguntas siguientes permiten completar el diagnóstico con información oficial. Se sugiere entregarlas con anticipación a cada contraparte.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-building-columns"></i> Dependencias y preguntas clave</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead><tr><th>Dependencia</th><th>Preguntas clave</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Dirección General de Centros Penales y Ministerio de Justicia</strong></td><td>Población por centro y situación jurídica; capacidad instalada; talleres existentes y su producción; presupuesto y costo por interno; sistemas de información vigentes; protocolos de seguridad para operadores externos</td></tr>
+                                <tr><td><strong>Ministerio de Hacienda (DGII, DGT)</strong></td><td>Ingresos propios por concepto; avance del DTE 2.0; brecha de IVA estimada; sistemas de cobro y pago en línea; convenios con bancos</td></tr>
+                                <tr><td><strong>Centro Nacional de Registros (CNR)</strong></td><td>Porcentaje del acervo digitalizado; tiempos de inscripción y certificación; ingresos por derechos registrales; incidentes de fraude; interoperabilidad con notarios</td></tr>
+                                <tr><td><strong>Viceministerio de Transporte</strong></td><td>Rutas, flota y subsidios; avance del cobro electrónico y del préstamo BID; estado de las concesiones; corredores críticos de siniestralidad</td></tr>
+                                <tr><td><strong>ANDA y operadores de agua</strong></td><td>Agua producida y facturada; pérdidas; cartera vencida; consumo eléctrico del bombeo; cobertura de medición</td></tr>
+                                <tr><td><strong>Ministerio de Turismo y CORSATUR</strong></td><td>Flujos por destino; gasto por visitante; plataformas existentes; prestadores formalizados</td></tr>
+                                <tr><td><strong>Municipalidades y COMURES</strong></td><td>Ingresos propios; sistemas de catastro y tasas; gasto en alumbrado y energía; capacidad de pago y endeudamiento</td></tr>
+                                <tr><td><strong>BCR, SIGET y supervisión financiera</strong></td><td>Reglas para agentes, remesas y comisiones; cobertura de telecomunicaciones rurales; regulación de generación distribuida</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-book"></i> Anexo B · Fuentes consultadas</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td>Información pública consultada al <strong>25 de octubre de 2026</strong>. Las cifras deben contrastarse con datos oficiales antes de su uso en procesos contractuales.</td></tr>
+                                <tr><td>IDHUCA, población penitenciaria al cierre de 2025, difundido por EFE (junio de 2026) y reproducido por El Diario de Hoy y otros medios</td></tr>
+                                <tr><td>Cobertura de prensa sobre el programa de capacitación y trabajo penitenciario anunciado por el Ejecutivo en 2024 (Teletica, entre otros)</td></tr>
+                                <tr><td>Banco Central de Reserva: remesas 2025 y Encuesta de Hogares de Propósitos Múltiples (EHPM) 2025, reportadas por El Mundo, El Diario de Hoy y elsalvador.com</td></tr>
+                                <tr><td>ISTU, MITUR y CORSATUR: visitantes e ingresos por turismo 2025 y primeros meses de 2026</td></tr>
+                                <tr><td>FMI: acuerdo técnico del 3 de septiembre de 2026 (elsalvador.com); Bloomberg Línea, febrero de 2026, sobre Bitcoin, deuda y FMI</td></tr>
+                                <tr><td>Ministerio de Hacienda y EDICOM: normativa DTE 2.0; BID, efecto de la facturación electrónica en la recaudación (citado por Revista E&amp;N)</td></tr>
+                                <tr><td>Banco Central de Reserva: plataforma de firma electrónica certificada</td></tr>
+                                <tr><td>elsalvador.com y The Rio Times (octubre de 2026): préstamo BID de US$60 millones, artículo 52 de la ley de transporte y estado del SITRAMSS</td></tr>
+                                <tr><td>LaGeo, CEL y Banco Mundial: capacidad geotérmica, plan de expansión y financiamiento (reportados por El Mundo, Prensa Latina y El Nuevo Diario)</td></tr>
+                                <tr><td>Naciones Unidas: Reglas Mandela; OIT: convenios sobre trabajo forzoso</td></tr>
+                                <tr><td>Documento “Chiapas Digital y Próspero” (v4.0, octubre de 2026): estructura, modelo de red comunitaria, agua inteligente, internet comunitario, pase turístico y paquete de arranque, adaptados al contexto salvadoreño</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-title"><i class="fas fa-seedling"></i> Anexo C · Líneas de crecimiento futuras</div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead><tr><th>Línea futura</th><th>Descripción</th><th>Proyectos base</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Remesas productivas</strong></td><td>Ahorro, inversión y crédito para hogares receptores, con cobro y envío en la red comunitaria</td><td>P9</td></tr>
+                                <tr><td><strong>Seguros paramétricos agrícolas</strong></td><td>Seguro por sequía o lluvia extrema con datos satelitales, vendido en la red comunitaria</td><td>P9, P18</td></tr>
+                                <tr><td><strong>Trazabilidad de café y productos de exportación</strong></td><td>Precios en tiempo real, trazabilidad por QR y certificación para exportación</td><td>P9, P10</td></tr>
+                                <tr><td><strong>Recolección de residuos con rutas optimizadas</strong></td><td>Rutas y contenedores con sensores y reportes desde la app</td><td>P5, P8</td></tr>
+                                <tr><td><strong>Facturación simplificada para micronegocios</strong></td><td>Emisión de comprobantes y cumplimiento básico desde el celular</td><td>P4, P9</td></tr>
+                                <tr><td><strong>Servicios ambientales y monitoreo</strong></td><td>Pago por conservación y vigilancia satelital de la deforestación</td><td>P10, P18</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="figures-grid">
+                    <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto 2rem;">
+                        <div class="figure-header">Figura 7 · Capacidad geotérmica instalada, meta de LaGeo para 2030 y potencial estimado por la CEL (cifras por validar)</div>
+                        <img src="assets/fig07-geotermia.png" alt="Capacidad geotérmica" class="figure-img">
+                    </div>
+                    <div class="figure-card" style="grid-column: 1 / -1; max-width: 980px; margin: 0 auto 2rem;">
+                        <div class="figure-header">Figura 8 · Aprovechamiento en cascada del calor en el parque industrial</div>
+                        <img src="assets/fig08-cascada.png" alt="Aprovechamiento en cascada del calor" class="figure-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <div class="footer-logo">
+                            <div class="logo-icon"><i class="fas fa-landmark"></i></div>
+                            <div class="logo-text">
+                                <span class="logo-title">El Salvador Digital y Próspero</span>
+                                <span class="logo-subtitle">Propuesta Estratégica 1.0</span>
+                            </div>
+                        </div>
+                        <p class="footer-desc">Estudio de oportunidades y portafolio de proyectos tecnológicos, de recaudación, movilidad, energía y servicios para el Gobierno de la República de El Salvador. Preparado por [Nombre de la empresa o consorcio proponente].</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Secciones</h4>
+                        <ul class="footer-links">
+                            <li><a href="#resumen">Resumen Ejecutivo</a></li>
+                            <li><a href="#diagnostico">Diagnóstico</a></li>
+                            <li><a href="#portafolio">Portafolio P1–P19</a></li>
+                            <li><a href="#priorizacion">Priorización</a></li>
+                            <li><a href="#csi">Grupo CSI</a></li>
+                            <li><a href="#anexos">Anexos</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Proyectos Destacados</h4>
+                        <ul class="footer-links">
+                            <li><a href="#eje1">Gestión penitenciaria y Trabajo con Propósito</a></li>
+                            <li><a href="#eje2">Ventanilla única y licencias digitales</a></li>
+                            <li><a href="#eje3">Red comunitaria y Pase Surf City</a></li>
+                            <li><a href="#eje5">Internet comunitario y geotermia</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Información</h4>
+                        <ul class="footer-links">
+                            <li><span><i class="fas fa-file-alt"></i> Versión 1.0</span></li>
+                            <li><span><i class="fas fa-calendar"></i> Octubre 2026</span></li>
+                            <li><span><i class="fas fa-shield-alt"></i> Documento Confidencial</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 El Salvador Digital y Próspero. Propuesta para consideración de las autoridades de la República de El Salvador.</p>
+                    <p class="footer-note">Este documento está basado en fuentes públicas; las cifras fiscales y operativas internas deben validarse con las dependencias antes de cualquier decisión. La adopción, el alcance y la forma de cada proyecto corresponden a las autoridades nacionales y municipales.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
