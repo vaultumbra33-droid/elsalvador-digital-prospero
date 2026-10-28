@@ -13,7 +13,8 @@
         .hero-bg.portada { background-image: url('assets/00-portada.png'); background-size: cover; background-position: center; }
 
         /* ── Figura 5 · Matriz nativa en web ── */
-        .matriz-wrap { overflow-x: auto; }
+        .figures-grid > .figure-card { width: 100%; }
+        .matriz-wrap { overflow-x: auto; max-width: 100%; }
         .matriz-table { border-collapse: separate; border-spacing: 0 6px; width: 100%; }
         .matriz-table td, .matriz-table th { white-space: nowrap; }
         .matriz-table thead th.colhead { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--navy, #0f3460); text-align: center; padding: 0.5rem 0.55rem; line-height: 1.2; white-space: normal; }
@@ -29,6 +30,13 @@
         .matriz-leyenda .ml::before { content: ''; width: 26px; height: 12px; border-radius: 3px; display: inline-block; }
         .ml0::before { background: #1a3a6b; } .ml1::before { background: #4a6fa5; }
         .ml2::before { background: #a9bcd9; } .ml3::before { background: #dbe4f2; }
+
+        @media (max-width: 640px) {
+            .rowhead { min-width: 140px; font-size: 0.76rem; padding: 0.4rem 0.6rem 0.4rem 0.2rem; }
+            .matriz-table { border-spacing: 0 4px; }
+            .matriz-table tbody td { min-width: 58px; padding: 0.6rem 0.35rem; font-size: 0.7rem; }
+            .matriz-table thead th.colhead { font-size: 0.7rem; padding: 0.4rem 0.3rem; }
+        }
     </style>
 </head>
 <body>

@@ -745,7 +745,6 @@ body {
 .data-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 680px;
 }
 
 .data-table thead {
@@ -1352,7 +1351,7 @@ body {
     .btn { width: 100%; justify-content: center; }
     .section { padding: 4rem 0; }
     .projects-grid, .roadmap-grid, .figures-grid { grid-template-columns: 1fr; }
-    .data-table { min-width: 580px; }
+    .data-table { min-width: 0; }
     .project-modal-body { padding: 1.4rem; }
     .footer-content { grid-template-columns: 1fr; }
     .pin-inputs { gap: 0.6rem; }
